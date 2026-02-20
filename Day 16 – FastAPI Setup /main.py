@@ -8,7 +8,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-
 # Pydantic models for request validation
 class ChatRequest(BaseModel):
     message: str

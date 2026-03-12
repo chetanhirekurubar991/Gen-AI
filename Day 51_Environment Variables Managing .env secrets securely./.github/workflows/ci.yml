@@ -1,24 +1,26 @@
 name: CI Pipeline
+
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
-        with: 
-          python-verison: '3.11'
+        with:
+          python-version: '3.11'
 
       - name: Install dependencies
         run: pip install -r "Day 51_Environment Variables Managing .env secrets securely./requirements.txt"
 
       - name: Run tests
-        run: pytest "Day 51_Environment Variables Managing .env secrets securely./test_main.py" -v
+        run: python -m pytest "Day 51_Environment Variables Managing .env secrets securely./test_main.py" -v

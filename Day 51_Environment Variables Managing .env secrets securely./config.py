@@ -1,9 +1,9 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    app_name: str
-    database_url: str
-    secret_key: str
+    app_name: str = "MyFastAPIApp"
+    database_url: str = "postgresql://user:password@localhost:5432/mydb"
+    secret_key: str = "test-secret"
 
     model_config = SettingsConfigDict(env_file=".env")
 

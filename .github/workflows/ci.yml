@@ -42,4 +42,25 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t fastapi-app:test .
-      
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker-build
+    steps:
+      - name: Deploy to Azure VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}
+          username: azureuser
+          key: ${{ secrets.AZURE_SSH_KEY }}
+          script: |
+            cd ~/Gen-AI
+            git pull origin main
+            docker build -t fastapi-app:latest "Day 51_Environment Variables Managing .env secrets securely."
+            docker stop fastapi-app || true
+            docker rm fastapi-app || true
+            docker run -d \
+              --name fastapi-app \
+              -p 8000:8000 \
+              fastapi-app:latest
+              

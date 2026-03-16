@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pydantic-settings
+pytest
+httpxredis==7.3.0

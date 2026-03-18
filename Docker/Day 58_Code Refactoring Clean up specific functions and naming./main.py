@@ -22,7 +22,7 @@ redis_client = redis.Redis(
     port=settings.redis_port,
     # if hosting on azure needs these 3 security layers i wrote half and comment that in below make it full before hosting
     # password=settings.redis_password,
-    # ssl=True,
+    # ssl=True, 
     decode_responses=True,
 )
 

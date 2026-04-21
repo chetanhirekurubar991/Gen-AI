@@ -1,0 +1,3 @@
+- pdfplumber detects tables by analyzing text position coordinates in PDFs
+- Real-world PDFs have dirty cells with \n characters — always clean before converting
+- Markdown is better than CSV for LLMs because LLMs are trained on Markdown-heavy internet data
